@@ -1,3 +1,4 @@
+<img src="extras/imagenes/laravel-logo.png">
 
 # Curso de Laravel código: 49153
 
