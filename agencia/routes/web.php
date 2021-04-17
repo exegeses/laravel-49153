@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('peticion', 'acción');
+Route::get('/test', function (){
+    return 'hola mundo';
+} );
+Route::get('/hola', function (){
+    return view('saludo');
+});
+
+Route::get('/inicio', function (){
+    return view('inicio');
+});
+Route::get('/condicional', function (){
+    $nombre = 'Marcos';
+    return view('/condicional', [ 'nombre'=>$nombre ] );
+});
