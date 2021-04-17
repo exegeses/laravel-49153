@@ -19,3 +19,18 @@
 > Aprovecha todo lo bueno de otros frameworks y utiliza las características de las últimas versiones de PHP.
 > Fue creado en 2011 por Taylor Otwell y tiene una gran influencia de frameworks como Ruby on Rails, Sinatra y ASP.NET MVC.  
 > Gran parte de Laravel está formado por dependencias, especialmente de Symfony, esto implica que el desarrollo de Laravel dependa también del desarrollo de sus dependencias.
+## Requisitos
+
+> De Software
+
+1. un terminal
+- [ ] la del sistema operativo
+- [ ] cmDer https://cmder.net/
+- [ ] Cygwin https://www.cygwin.com/
+- [ ] Git Bash
+
+2. Composer
+   Composer es un administrador de dependencias en PHP.  
+   https://getcomposer.org/  
+   https://getcomposer.org/Composer-Setup.exe
+
