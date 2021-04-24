@@ -15,3 +15,10 @@
 
 <img src="imagenes/capas-rSQL%2BfQB.png">
 
+## Raw SQL
+
+	DB::select('SELECT ...');
+	DB::insert('INSERT INTO.....');
+	DB::update('UPDATE ....');
+	DB::delete('DELETE FROM...');
+
