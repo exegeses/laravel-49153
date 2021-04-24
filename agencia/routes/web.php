@@ -31,3 +31,12 @@ Route::get('/condicional', function (){
     $nombre = 'Marcos';
     return view('/condicional', [ 'nombre'=>$nombre ] );
 });
+
+############################################
+####### CRUD regiones
+Route::get('/adminRegiones', function ()
+{
+    //obtenemos listado de regiones
+    $regiones = DB::select('SELECT regID, regNombre FROM regiones');
+    dd($regiones);
+});
