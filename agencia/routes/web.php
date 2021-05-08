@@ -93,3 +93,24 @@ Route::post('/modificarRegion', function (){
     return redirect('/adminRegiones')
                 ->with('mensaje', 'Región: '.$regNombre.' modificada correctamente');
 });
+
+############################################
+####### CRUD destinos
+Route::get('/adminDestinos', function(){
+    //obtener listado de destinos
+    /*
+    $destinos = DB::select(
+                    'SELECT destID, destNombre,
+                            regiones.regID, regiones.regNombre,
+                            destPrecio, destAsientos, destDisponibles, destActivo
+                       FROM destinos
+                       INNER JOIN regiones on destinos.regID = regiones.regID'
+                );
+    */
+    $destinos = DB::table('destinos')
+                ->join('regiones', 'destinos.regID','=','regiones.regID')
+                ->select('destinos.destID', 'destinos.destNombre', 'regiones.regNombre','destinos.destPrecio')
+                ->get();
+    //retornar vista
+    return view('adminDestinos', [ 'destinos'=>$destinos ] );
+});
