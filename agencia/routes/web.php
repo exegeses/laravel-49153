@@ -74,3 +74,22 @@ Route::get('/modificarRegion/{id}', function ($id){
                     ->first(); //fetch()
     return view('modificarRegion', [ 'region'=>$region ] );
 });
+Route::post('/modificarRegion', function (){
+    //capturamos datos enviados
+    $regNombre = $_POST['regNombre'];
+    $regID = $_POST['regID'];
+    //modificamos
+    /*
+    DB::update( "UPDATE regiones
+                    SET regNombre = :regNombre
+                    WHERE regID = :regID",
+                [ $regNombre, $regID ]
+            );
+    */
+    DB::table('regiones')
+            ->where('regID', $regID)
+            ->update([ 'regNombre'=>$regNombre ]);
+    //redirección con mensaje
+    return redirect('/adminRegiones')
+                ->with('mensaje', 'Región: '.$regNombre.' modificada correctamente');
+});
