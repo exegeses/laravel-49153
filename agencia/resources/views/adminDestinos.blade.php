@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 @section('contenido')
-    <h1>Panel de administración de Destinos</h1>
+    <h1>Panel de administración de destinos</h1>
 
     @if (session('mensaje'))
         <div class="alert alert-success">
@@ -28,12 +28,12 @@
                 <td>{{ $destino->regNombre }}</td>
                 <td>${{ $destino->destPrecio }}</td>
                 <td>
-                    <a href="/modificarDestino/id" class="btn btn-outline-secondary">
+                    <a href="/modificarDestino/{{ $destino->destID }}" class="btn btn-outline-secondary">
                         Modificar
                     </a>
                 </td>
                 <td>
-                    <a href="/eliminarDestino/id" class="btn btn-outline-secondary">
+                    <a href="/eliminarDestino/{{ $destino->destID }}" class="btn btn-outline-secondary">
                         Eliminar
                     </a>
                 </td>
