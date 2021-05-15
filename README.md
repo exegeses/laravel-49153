@@ -78,6 +78,14 @@
 
     git clone https://github.com/exegeses/laravel-49153.git
 
+
+> Una vez descargado, vamos a obtener los componetes necesorios para que funcione el framework  
+> El comando necesario es "composer update" en el proyecto.
+
+    cd catalogo  
+    composer update  
+
+
 > Cuando haya terminado de descargar y querramos iniciar el proyecto, va a parecer que esta todo funcionando bien, pero aun falta algo.  
 > Al intentar editar el archivo de configuración  ".env" nos damos cuenta que no está- sin embargo, hay un archivo. ".env.example"  
 > Entonces vamos a generar nuetro archivo ".env" renombrando o compiando este archivo.
