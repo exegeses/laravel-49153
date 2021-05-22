@@ -6,3 +6,6 @@
 >Al utilizar Eloquent, cada tabla de una base de datos tiene su Modelo correspondiente que se emplea para interactuar con dicha tabla.   
 >Además de obtener registros de dicha tabla, los modelos de Eloquent posibilitan simplificaciones de inseción, modificación, y eliminación de registros de la tabla en cuestión.   
 
+## Generación de modelos
+
+    php artisan make:model Nombre
