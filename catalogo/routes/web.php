@@ -18,3 +18,8 @@ Route::get('/', function () {
 });
 
 Route::view('/inicio', 'inicio');
+
+#####################################################
+#### CRUD de marcas
+use App\Http\Controllers\MarcaController;
+Route::get('/adminMarcas', [ MarcaController::class, 'index' ] );
