@@ -27,7 +27,14 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('agregarMarca');
+    }
+
+    private function validarForm(Request $request)
+    {
+        $request->validate(
+                    [ 'mkNombre'=>'required|min:2|max:30' ]
+                );
     }
 
     /**
@@ -38,7 +45,11 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //capturamos dato enviado por el form
+        $mkNombre = $request->mkNombre;
+        //validación
+        $this->validarForm($request);
+        return 'si llegamos hasta aquí, esta todo ok';
     }
 
     /**
