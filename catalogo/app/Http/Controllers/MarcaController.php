@@ -54,7 +54,15 @@ class MarcaController extends Controller
         $mkNombre = $request->mkNombre;
         //validación
         $this->validarForm($request);
-        return 'si llegamos hasta aquí, esta todo ok';
+        //instanciar, asignar atributos, guardar
+        $Marca = new Marca;
+        $Marca->mkNombre = $mkNombre;
+        $Marca->save();
+        //redirección + mensaje ok
+        return redirect('/adminMarcas')
+                ->with([
+                    'mensaje'=>'Marca: '.$mkNombre.' agregada correctamente.'
+                ]);
     }
 
     /**
