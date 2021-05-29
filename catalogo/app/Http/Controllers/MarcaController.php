@@ -33,7 +33,12 @@ class MarcaController extends Controller
     private function validarForm(Request $request)
     {
         $request->validate(
-                    [ 'mkNombre'=>'required|min:2|max:30' ]
+                    [ 'mkNombre'=>'required|min:2|max:30' ],
+                    [
+                      'mkNombre.required'=>'El campo "Nombre de la marca" es obligatorio.',
+                      'mkNombre.min'=>'El campo "Nombre de la marca" debe tener al menos 2 caractéres',
+                      'mkNombre.max'=>'El campo "Nombre de la marca" debe tener 30 caractéres como máximo'
+                    ]
                 );
     }
 
