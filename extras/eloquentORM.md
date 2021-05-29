@@ -9,3 +9,20 @@
 ## Generación de modelos
 
     php artisan make:model Nombre
+
+## Convenciones de nombres de Modelos
+
+> Los nombres de las tablas utilizan un sistema de plurales, si necesitamos modificarlos, tenemos el atributo $table.
+
+    protected $table = 'mi_tabla';  
+
+> Eloquent también assume que cada modelo correspondiente a una tabla de la base de datostiene una primary key column llamada "id". Si necesitamos modificarla, podemos definir un atributo protected $primaryKey con el nombre del campo que sea nuestra primary key.
+
+    protected $primaryKey = 'icProducto';  
+
+> De manera predeterminada, Eloquent espera que todas las tablas de tu base de datos tengan los campos "created_at" y "updated_at"; y por lo tanto el modelo conlleva esta convensión.   
+> Cuando se cree o modifique un modelo, Eloquena seteará los valores en estos campos.   
+> Si no queremos que Eloquent opere con estos campos, o bien si no queremos modificar la estructura de nuestras tablas,debemos definir el atributo público $timestamps de nuestro modelo con el valor false.
+
+    public $timestamps = false;  
+
