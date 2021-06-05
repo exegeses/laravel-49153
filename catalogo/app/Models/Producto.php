@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idProducto';
+    public $timestamps = false;
+
+    ###########################
+    ## métodos de relaciones
+    public function relMarca()
+    {
+        return $this->belongsTo(
+                        Marca::class,
+                        'idMarca',
+                        'idMarca'
+                        );
+    }
 }

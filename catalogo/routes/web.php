@@ -38,3 +38,8 @@ Route::get('/agregarCategoria', [ CategoriaController::class, 'create' ] );
 Route::post('/agregarCategoria', [ CategoriaController::class, 'store' ]);
 Route::get('/modificarCategoria/{id}', [ CategoriaController::class, 'edit' ] );
 Route::put('/modificarCategoria', [ CategoriaController::class, 'update' ]);
+
+#####################################################
+#### CRUD de productos
+use App\Http\Controllers\ProductoController;
+Route::get('/adminProductos', [ ProductoController::class, 'index' ]);
