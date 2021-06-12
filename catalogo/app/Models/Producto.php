@@ -21,4 +21,13 @@ class Producto extends Model
                         'idMarca'
                         );
     }
+
+    public function relCategoria()
+    {
+        return $this->belongsTo(
+                        Categoria::class,
+                        'idCategoria',
+                        'idCategoria'
+                    );
+    }
 }

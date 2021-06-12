@@ -3,12 +3,12 @@
 @section('contenido')
 
 
-        <h1>Alta de un nuevo producto</h1> 
+        <h1>Alta de un nuevo producto</h1>
 
         <div class="alert bg-light border border-white shadow round col-8 mx-auto p-4">
 
             <form action="/agregarProducto" method="post" enctype="multipart/form-data">
-                
+            @csrf
                 Nombre: <br>
                 <input type="text" name="prdNombre" class="form-control">
                 <br>
@@ -17,17 +17,23 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">$</div>
                     </div>
-                    <input type="number" name="prdPrecio" class="form-control">
+                    <input type="number" name="prdPrecio" class="form-control" step="0.01">
                 </div>
                 <br>
                 Marca: <br>
                 <select name="idMarca" class="form-control" required>
                     <option value="">Seleccione una marca</option>
+            @foreach( $marcas as $marca )
+                    <option value="{{ $marca->idMarca }}">{{ $marca->mkNombre }}</option>
+            @endforeach
                 </select>
                 <br>
                 Categoría: <br>
                 <select name="idCategoria" class="form-control" required>
                     <option value="">Seleccione una Categoría</option>
+            @foreach( $categorias as $categoria )
+                    <option value="{{ $categoria->idCategoria }}">{{ $categoria->catNombre }}</option>
+            @endforeach
                 </select>
                 <br>
                 Presentacion: <br>
