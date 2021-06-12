@@ -44,7 +44,7 @@ class ProductoController extends Controller
 
     private function validarForm(Request $request)
     {
-        $this->validate(
+        $request->validate(
                 [
                     'prdNombre'=>'required|min:3|max:70',
                     'prdPrecio'=>'required|numeric|min:0',
@@ -80,9 +80,11 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //validación
+        $this->validarForm($request);
         //subir imagen (si fue enviada)
         //instanciacion, asignacion, guardado
         //redirección con mensaje ok
+        return 'pasó validación';
     }
 
     /**
