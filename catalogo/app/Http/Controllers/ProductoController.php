@@ -71,6 +71,22 @@ class ProductoController extends Controller
         );
     }
 
+    private function subirImagen(Request $request)
+    {
+        //si no enviaron archivo en método store()
+        $prdImagen = 'noDisponible.jpg';
+        //si enviaron imagen SUBIR ARCHIVO
+        if( $request->file('prdImagen') ){
+            //renombrar time().extension de archivo
+            $ext = $request->file('prdImagen')->extension();
+            $prdImagen = time().'.'.$ext;
+            //subir archivo al directorio productos en public
+            $request->file('prdImagen')
+                    ->move( public_path('productos/'), $prdImagen );
+        }
+        return $prdImagen;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -82,9 +98,20 @@ class ProductoController extends Controller
         //validación
         $this->validarForm($request);
         //subir imagen (si fue enviada)
+        $prdImagen = $this->subirImagen($request);
         //instanciacion, asignacion, guardado
+        $Producto = new Producto;
+        $Producto->prdNombre = $prdNombre = $request->prdNombre;
+        $Producto->prdPrecio = $request->prdPrecio;
+        $Producto->idMarca = $request->idMarca;
+        $Producto->idCategoria = $request->idCategoria;
+        $Producto->prdPresentacion = $request->prdPresentacion;
+        $Producto->prdStock = $request->prdStock;
+        $Producto->prdImagen = $prdImagen;
+        $Producto->save();
         //redirección con mensaje ok
-        return 'pasó validación';
+        return redirect('/adminProductos')
+                    ->with([ 'mensaje' => 'Producto: '.$prdNombre. ' agregado correctamente' ]);
     }
 
     /**
