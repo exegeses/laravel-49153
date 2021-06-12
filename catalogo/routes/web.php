@@ -38,6 +38,8 @@ Route::get('/agregarCategoria', [ CategoriaController::class, 'create' ] );
 Route::post('/agregarCategoria', [ CategoriaController::class, 'store' ]);
 Route::get('/modificarCategoria/{id}', [ CategoriaController::class, 'edit' ] );
 Route::put('/modificarCategoria', [ CategoriaController::class, 'update' ]);
+Route::get('/eliminarCategoria/{id}', [ CategoriaController::class, 'confirmar' ]);
+Route::delete('/eliminarCategoria', [ CategoriaController::class, 'destroy' ]);
 
 #####################################################
 #### CRUD de productos

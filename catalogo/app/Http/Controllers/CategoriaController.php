@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -124,6 +125,29 @@ class CategoriaController extends Controller
             );
     }
 
+    private function productoPorCategoria($idCategoria)
+    {
+        //$check = Producto::where('idCategoria', $idCategoria)->first();
+        //$check = Producto::firstWhere('idCategoria', $idCategoria);
+        $check = Producto::where('idCategoria', $idCategoria)->count();
+        return $check;
+    }
+
+    public function confirmar($id)
+    {
+        //obtener datos de la categoria
+        $Categoria = Categoria::find($id);
+        ## chequear si NO hay un producto de esa categoria
+        if( $this->productoPorCategoria($id) == 0 ){
+            //retornar vista con los datos para confirmar
+            return view('eliminarCategoria', [ 'Categoria'=>$Categoria ]);
+        }
+        return redirect('/adminCategorias')
+            ->with([
+                'mensaje'=>'No se puede eliminar la categoría: '.$Categoria->catNombre.' ya que tiene productos relacionados.',
+                'danger'=>'danger'
+            ]);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -131,8 +155,10 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Request $request)
     {
-        //
+        Categoria::destroy($request->idCategoria);
+        return redirect('/adminCategorias')
+            ->with(['mensaje'=>'Categoría: '.$request->catNombre.' eliminada correctamente']);
     }
 }
