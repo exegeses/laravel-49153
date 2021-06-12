@@ -72,5 +72,16 @@
             </div>
         @endif
 
+        <script>
+            var campo = document.querySelector('input[name="prdImagen"]');
+            var caja  = document.querySelector('.custom-file-label');
+
+            function cambiarTexto()
+            {
+                caja.inerText = campo.value;
+            }
+
+        </script>
+
    @endsection
 
