@@ -75,6 +75,10 @@ class ProductoController extends Controller
     {
         //si no enviaron archivo en método store()
         $prdImagen = 'noDisponible.jpg';
+        //si no enviaron archivo en método update()
+        if( $request->has('imgActual') ){
+            $prdImagen = $request->imgActual;
+        }
         //si enviaron imagen SUBIR ARCHIVO
         if( $request->file('prdImagen') ){
             //renombrar time().extension de archivo
@@ -131,9 +135,19 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
+    public function edit( $id )
     {
-        //
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        $Producto = Producto::with('relMarca', 'relCategoria')
+                                ->find($id);
+        return view('modificarProducto',
+                [
+                    'marcas'=>$marcas,
+                    'categorias'=>$categorias,
+                    'Producto'=>$Producto
+                ]
+        );
     }
 
     /**
@@ -143,9 +157,26 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request)
     {
-        //
+        $prdNombre = $request->prdNombre;
+        //validar
+        $this->validarForm($request);
+        //subir imagen
+        $prdImagen = $this->subirImagen($request);
+        //obtener objeto, asignar atributos, guardar
+        $Producto = Producto::find($request->idProducto);
+        $Producto->prdNombre = $prdNombre;
+        $Producto->prdPrecio = $request->prdPrecio;
+        $Producto->idMarca = $request->idMarca;
+        $Producto->idCategoria = $request->idCategoria;
+        $Producto->prdPresentacion = $request->prdPresentacion;
+        $Producto->prdStock = $request->prdStock;
+        $Producto->prdImagen = $prdImagen;
+        $Producto->save();
+        //redirección con mensaje ok
+        return redirect('/adminProductos')
+            ->with([ 'mensaje' => 'Producto: '.$prdNombre. ' modificado correctamente' ]);
     }
 
     /**
