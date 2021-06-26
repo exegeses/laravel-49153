@@ -17,6 +17,7 @@ Jetstream utiliza Sanctum y, de manera opcional, manejo de equipos de trabajo.
 
     composer require laravel/jetstream
 
+
 <img src="imagenes/livewire.png">
 
 ## Livewire
@@ -32,6 +33,7 @@ Jetstream utiliza Sanctum y, de manera opcional, manejo de equipos de trabajo.
 
 >> Livewire scaffolding installed successfully.
 >>Please execute the "npm install && npm run dev" command to build your assets.
+
 
 >Después de instalar Jetstream con Livewire (o InertiaJS) queda como último paso de instalación generar las dependencias de NPM ya que, lamentablemente, Javascript necesita este módulo.
 
@@ -60,7 +62,7 @@ Jetstream utiliza Sanctum y, de manera opcional, manejo de equipos de trabajo.
 
 > hasta aquí estaría todo listo, sólo restaría si quisieramos ver qué es lo que hay en los componentes Livewire + Blade, publicarlos
 
-##Publicar componentes de Blade
+## Publicar componentes de Blade
 > Para publicar los componentes de Blade utilizaremos el comando
 
     php artisan vendor:publish --tag=jetstream-views
